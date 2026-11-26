@@ -491,3 +491,15 @@ textarea:focus-visible {
         animation: none !important;
     }
 }
+
+/* ---------- fact-panel theme ---------- */
+/* Pass the site theme into the fact-panel component */
+
+fact-panel {
+    --fp-background: var(--surface-color);
+    --fp-text: var(--text-main-color);
+    --fp-dim: var(--text-dim-color);
+    --fp-border: var(--border-color);
+    --fp-bar: var(--bar-color);
+    --fp-accent: var(--success-color);
+}

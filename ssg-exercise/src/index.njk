@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Carlos Lugo > CS @ UCSD</title>
+        <link rel="icon" href="data:,">
+		<link rel="stylesheet" href="portfolio.css">
+		<script src="theme.js"></script>
+
+		<!-- custom element 2 (js console script) -->
+		<script>
+			class HelloWorld extends HTMLElement {
+				connectedCallback() {
+					console.log("Hello World!");
+				}
+			}
+			customElements.define("hello-world", HelloWorld);
+		</script>
+	</head>
+	<body>
+		<hello-world></hello-world>
+		<header>
+			<button type="button" id="theme-toggle" class="theme-toggle" hidden>Switch theme</button>
+			<h1>Carlos Lugo</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html" aria-current="page">Home</a></li>
+					<li><a href="projects.html">Projects</a></li>
+					<li><a href="resume.html">Resume and Contact</a></li>
+					<li><a href="experiments.html">Experiments</a></li>
+					<li><a href="form-no-js.html" >Contact (No JS)</a></li>
+					<li><a href="form-with-js.html">Contact (JS)</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<section>
+				<h2>About Me</h2>
+				<p>
+					Hi, I'm Carlos Lugo, a 4th year <strong>Computer Science</strong>
+					student @ <a href="https://www.ucsd.edu/">UC San Diego</a>. My core
+					focus is <em>low-level systems</em> and understanding the foundations of
+					<i>Computer Science</i>. I like to program in <b>C</b> and <b>C++</b>.
+				</p>
+			</section>
+
+			<section>
+				<h2>Current Focus</h2>
+				<noscript>
+					<p>Your browser does not support JavaScript, but this site runs perfectly without it.</p>
+				</noscript>
+				<div>
+					<span>Currently learning:</span>
+					<ul>
+						<li>...</li>
+						<li>...</li>
+						<li>...</li>
+					</ul>
+				</div>
+				<br>
+			</section>
+		</main>
+        {% include "footer.njk" %}
+	</body>
+</html>

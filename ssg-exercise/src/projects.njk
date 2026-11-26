@@ -1,0 +1,88 @@
+---
+permalink: projects.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Projects > Carlos Lugo</title>
+        <link rel="stylesheet" href="portfolio.css">
+        <script src="theme.js"></script>
+
+	</head>
+	<body>
+        <header>
+        <button type="button" id="theme-toggle" class="theme-toggle" hidden>Switch theme</button>
+		<h1>Projects</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" aria-current="page">Projects</a></li>
+                <li><a href="resume.html">Resume and Contact</a></li>
+                <li><a href="experiments.html">Experiments</a></li>
+                <li><a href="form-no-js.html" >Contact (No JS)</a></li>
+                <li><a href="form-with-js.html">Contact (JS)</a></li>
+            </ul>
+        </nav>
+        </header>
+        <main>
+            <article>
+                <portfolio-card>
+                    <h3>IPv4 Router Implementation</h3>
+                    <p>Developed an RFC-compliant IPv4 router in C. 
+                        Handled ARP request/reply sweeps, ICMP error packet generation, 
+                        and match routing table lookups.</p>
+                    <picture>
+                        <source srcset="project1.webp" type="image/webp">
+                        <img src="project1.png" alt="Project 1 Image">
+                    </picture>
+                    <br>
+                    <progress value="100" max="100">100%</progress>
+                </portfolio-card>
+
+                <portfolio-card>
+                    <h3>Project 2</h3>
+                    <p>Description of Project 2.</p>
+                    <svg width="50" height="50" fill="white" stroke="white">
+                        <rect width="50" height="50" x="25" y="25" />
+                    </svg>
+                    <br>
+                    <progress value="75" max="100">75%</progress>
+                </portfolio-card>
+            </article>
+
+            <hr>
+
+            <section>
+                <h2>Project Inquiry</h2>
+                <form action="#" method="get">
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    
+                    <label for="name">Name:</label>
+                    <br>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    
+                    <label for="message">Message:</label>
+                    <br>
+                    <textarea id="message" name="message" rows="4" cols="30"></textarea>
+                    <br>
+                    
+                    <!-- does nothing yet -->
+                    <button type="button">Send Inquiry</button>
+                </fieldset>
+            </form>
+            </section>
+            <dialog open>
+                <p>This site is under construction for CSE 134B.</p>
+                <form method="dialog">
+                    <button>Close</button> 
+                </form>
+            </dialog>
+        </main>
+        {% include "footer.njk" %}
+	</body>
+</html>

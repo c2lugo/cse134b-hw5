@@ -1,0 +1,505 @@
+:root {
+    /* Catppuccin Mocha */
+    --background-color: #1e1e2e;   /* base   */
+    --surface-color: #181825;      /* mantle: window bodies */
+    --bar-color: #11111b;          /* crust: window title bars */
+    --border-color: #45475a;       /* surface1 */
+    --text-main-color: #cdd6f4;    /* text */
+    --text-dim-color: #a6adc8;     /* subtext0 */
+    --accent-color: #cba6f7;       /* mauve */
+    --focus-color: #89b4fa;        /* blue */
+    --success-color: #a6e3a1;      /* green */
+    --error-color: #f38ba8;        /* red */
+    --warning-color: #f9e2af;      /* yellow */
+    --font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-main-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+    max-width: 850px;
+}
+
+/* keep media from causing sideways scrolling on phones */
+img,
+video,
+iframe,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
+/* ---------- Headings ---------- */
+
+/* page title looks like a shell prompt with a blinking cursor */
+h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px dashed var(--border-color);
+}
+
+h1::before {
+    content: "> ";
+    content: "> " / "";           /* decorative: hidden from screen readers */
+    color: var(--success-color);
+}
+
+h1::after {
+    content: "";
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    margin-left: 0.15em;
+    vertical-align: -0.12em;
+    background-color: var(--text-main-color);
+    animation: blink 1s steps(1) 5;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* markdown-style heading markers */
+h2 {
+    font-size: 1.35rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--accent-color);
+}
+
+h2::before {
+    content: "## ";
+    content: "## " / "";
+    color: var(--text-dim-color);
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.5rem;
+}
+
+h3::before {
+    content: "### ";
+    content: "### " / "";
+    color: var(--text-dim-color);
+}
+
+/* targets the 1st paragraph after each h2 heading. */
+h2 + p {
+    color: var(--text-dim-color);
+}
+
+/* ---------- Links ---------- */
+
+a {
+    color: var(--focus-color);
+    text-underline-offset: 3px;
+}
+
+/* targets external links so they are not the same as nav links */
+a[href^="https://"] {
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* ---------- Navigation ---------- */
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style-type: none;
+    padding: 0 0 1rem;
+    margin: 1rem 0 2rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+nav a {
+    color: var(--text-dim-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a::before {
+    content: "./";
+    content: "./" / "";
+    color: var(--border-color);
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* the link for the page you're on */
+nav a[aria-current="page"] {
+    color: var(--success-color);
+}
+
+/* ---------- Terminal windows ---------- */
+
+/* every top-level section and project card is a "window" */
+main > section,
+portfolio-card {
+    display: block;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0 1.25rem 1.25rem;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+}
+
+/* the first heading in a window becomes its title bar */
+main > section > h2:first-child,
+portfolio-card > h3:first-child {
+    display: flex;
+    align-items: center;
+    margin: 0 -1.25rem 1rem;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--bar-color);
+    color: var(--text-dim-color);
+    font-size: 0.95rem;
+    font-weight: normal;
+}
+
+/* red / yellow / green window dots (purely decorative) */
+main > section > h2:first-child::before,
+portfolio-card > h3:first-child::before {
+    content: "";
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-right: 3rem;
+    border-radius: 50%;
+    background-color: var(--error-color);
+    box-shadow: 1.1rem 0 var(--warning-color), 2.2rem 0 var(--success-color);
+}
+
+/* ---------- Lists, rules, misc content ---------- */
+
+main ul {
+    list-style-type: "- ";
+}
+
+main li::marker {
+    color: var(--success-color);
+}
+
+hr {
+    border: 0;
+    border-top: 1px dashed var(--border-color);
+    margin: 2rem 0;
+}
+
+progress {
+    accent-color: var(--success-color);
+}
+
+canvas,
+iframe {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+/* the "under construction" dialog on projects.html */
+dialog {
+    background-color: var(--surface-color);
+    color: var(--text-main-color);
+    border: 1px solid var(--warning-color);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+}
+
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+    color: var(--text-dim-color);
+    font-size: 0.9rem;
+}
+
+/* ---------- Form controls ---------- */
+
+button,
+input,
+textarea {
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.5em 1em;
+    background-color: var(--background-color);
+    color: var(--text-main-color);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: var(--bar-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--text-main-color);
+    border-color: var(--text-main-color);
+    color: var(--background-color);
+}
+
+/* visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 3px;
+}
+
+/* ---------- Contact form ---------- */
+
+.contact-form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;   /* label sits above its control */
+    gap: 0.4rem;
+}
+
+.prompt {
+    color: var(--success-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 2px solid var(--border-color);   /* Part 2 only changes this color: no layout shift */
+    border-radius: 4px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    justify-self: start;
+}
+
+/* ---------- Small screens & motion ---------- */
+
+@media (max-width: 500px) {
+    body {
+        padding: 1rem;
+    }
+
+    main > section,
+    portfolio-card {
+        padding: 0 1rem 1rem;
+    }
+
+    main > section > h2:first-child,
+    portfolio-card > h3:first-child {
+        margin: 0 -1rem 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    h1::after {
+        animation: none;
+    }
+}
+
+/* ---------- validation states ---------- */
+
+.hint {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-dim-color);
+}
+
+.required {
+    color: var(--warning-color);
+    font-size: 0.875rem;
+}
+
+/* required fields */
+.contact-form :required {
+    border-left-color: var(--accent-color);
+}
+
+/* only after the user interacts: */
+.contact-form input:user-invalid,
+.contact-form textarea:user-invalid {
+    border-color: var(--error-color);
+    border-style: dashed;
+}
+
+.contact-form input:user-valid,
+.contact-form textarea:user-valid {
+    border-color: var(--success-color);
+}
+
+/* ---------- message areas ---------- */
+
+/* make the hidden attribute always wins */
+[hidden] {
+    display: none !important;
+}
+
+.form-messages {
+    display: grid;
+    gap: 1rem;
+}
+
+.message-box {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-left-width: 4px;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+}
+
+.message-box p {
+    margin: 0;
+}
+
+.message-title {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--text-dim-color);
+}
+
+/* errors */
+.error-box {
+    border-left-color: var(--error-color);
+}
+
+#error-list {
+    margin: 0.25rem 0 0;
+    padding-left: 1.25rem;
+    list-style-type: "✗ ";
+    color: var(--error-color);
+}
+
+#no-errors {
+    color: var(--success-color);
+}
+
+/* color and text change at each state */
+.info-box {
+    border-left-color: var(--focus-color);
+}
+
+.info-box[data-state="warning"] {
+    border-left-color: var(--warning-color);
+}
+
+.info-box[data-state="warning"] #char-count,
+.info-box[data-state="warning"] #char-status {
+    color: var(--warning-color);
+}
+
+.info-box[data-state="limit"] {
+    border-left-color: var(--accent-color);
+}
+
+.info-box[data-state="limit"] #char-count,
+.info-box[data-state="limit"] #char-status {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* ---------- Light Theme(Catppuccin Latte) ---------- */
+/* Dark (Mocha) is the default in :root. */
+
+:root[data-theme="light"] {
+    --background-color: #eff1f5;   /* base */
+    --surface-color: #e6e9ef;      /* mantle */
+    --bar-color: #dce0e8;          /* crust */
+    --border-color: #9ca0b0;       /* overlay0 */
+    --text-main-color: #4c4f69;    /* text */
+    --text-dim-color: #5c5f77;     /* subtext1 */
+    --accent-color: #7528d9;       /* mauve (darkened) */
+    --focus-color: #1a55d0;        /* blue (darkened) */
+    --success-color: #276e19;      /* green (darkened) */
+    --error-color: #b40c33;        /* red (darkened) */
+    --warning-color: #8a5a00;      /* yellow (darkened) */
+}
+
+/* tells the browser to draw built-in parts (scrollbars, etc.) to match */
+:root {
+    color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
+/* the toggle button */
+.theme-toggle {
+    display: block;
+    margin: 0 0 1rem auto;
+    padding: 0.35em 0.9em;
+    font-size: 0.875rem;
+    background-color: transparent;
+    color: var(--text-main-color);
+    border: 2px solid var(--border-color);
+}
+
+.theme-toggle::before {
+    content: "$ ";
+    content: "$ " / "";
+    color: var(--success-color);
+}
+
+/* ---------- view transition ---------- */
+
+/* default cross-fade, slightly slower so the theme change is easy to see */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.4s;
+}
+
+/* reduced motion: no animation (theme.js also skips the transition) */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
+
+/* ---------- fact-panel theme ---------- */
+/* Pass the site theme into the fact-panel component */
+
+fact-panel {
+    --fp-background: var(--surface-color);
+    --fp-text: var(--text-main-color);
+    --fp-dim: var(--text-dim-color);
+    --fp-border: var(--border-color);
+    --fp-bar: var(--bar-color);
+    --fp-accent: var(--success-color);
+}

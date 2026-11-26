@@ -1,0 +1,43 @@
+/* fact-panel component styles.
+   Reads --fp-* custom properties; fallbacks are Catppuccin Mocha. */
+
+fact-panel {
+    display: block;
+    margin-block: 1rem;
+    background-color: var(--fp-background, #181825);
+    color: var(--fp-text, #cdd6f4);
+    border: 2px solid var(--fp-border, #45475a);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Title bar: the "$ fortune" heading */
+fact-panel h3 {
+    margin: 0;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    background-color: var(--fp-bar, #11111b);
+    color: var(--fp-accent, #a6e3a1);
+    border-bottom: 2px solid var(--fp-border, #45475a);
+}
+
+fact-panel .fact {
+    margin: 1rem 1rem 0.25rem;
+}
+
+/* No display rule here, so the hidden attribute still works for compact mode */
+fact-panel .detail {
+    margin: 0 1rem;
+    font-size: 0.875rem;
+    color: var(--fp-dim, #a6adc8);
+}
+
+fact-panel button {
+    margin: 1rem;
+}
+
+fact-panel [role="status"] {
+    margin: 0 1rem 1rem;
+    font-size: 0.875rem;
+    color: var(--fp-dim, #a6adc8);
+}
